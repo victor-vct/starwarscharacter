@@ -19,7 +19,7 @@ public class CharacterDAO extends BaseDAO<Register> {
 
     private MapRegisters map;
 
-    protected CharacterDAO(Context context) {
+    public CharacterDAO(Context context) {
         super(context);
         map = new MapRegisters();
     }

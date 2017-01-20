@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class BDCore extends SQLiteOpenHelper {
 
     private static final String DATABASE = "starwars";
-    private static final int VERSION_DB = 0;
+    private static final int VERSION_DB = 1;
 
     public BDCore(Context context) {
         super(context, DATABASE, null, VERSION_DB);

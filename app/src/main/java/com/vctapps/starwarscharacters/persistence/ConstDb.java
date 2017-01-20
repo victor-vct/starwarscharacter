@@ -40,10 +40,10 @@ public class ConstDb {
 
         public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ( " +
                 COLUMN_COD + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_USER_NAME + TEXT_NN +
-                COLUMN_LINK + TEXT_NN +
-                COLUMN_CHARACTER_NAME + TEXT +
-                COLUMN_LAT + DOUBLE +
+                COLUMN_USER_NAME + TEXT_NN + CM +
+                COLUMN_LINK + TEXT_NN + CM +
+                COLUMN_CHARACTER_NAME + TEXT + CM +
+                COLUMN_LAT + DOUBLE + CM +
                 COLUMN_LNG + DOUBLE + " )";
 
         public static final String DROP_TABLE = "DROP TABLE " + TABLE_NAME;
