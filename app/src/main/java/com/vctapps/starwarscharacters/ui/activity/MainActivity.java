@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -56,19 +57,20 @@ public class MainActivity extends AppCompatActivity implements OnFinish<List<Reg
 
     @Override
     public void onSuccess(List<Register> registers) {
-        if(registers == null || registers.size() >= 0){
+        if(registers == null || registers.size() <= 0){
             onError();
+            Log.d(TAG, "mainActivity - onSuccess: ocorreu erro ao receber registros");
         }else{
             adapter = new RegisterAdapter(this, registers);
             recycler.setAdapter(adapter);
             progressLayout.setVisibility(View.GONE);
+            Log.d(TAG, "mainActivity - onSuccess: numero de registros: " + registers.size());
         }
     }
 
     @Override
     public void onError() {
-        progressLayout.setVisibility(View.GONE);
-        noCharacter.setVisibility(View.VISIBLE);
-        Toast.makeText(this, "Não foi encontrado nenhum registro", Toast.LENGTH_SHORT).show();
+        progressLayout.setVisibility(View.GONE); //desabilita a tela com progress view
+        noCharacter.setVisibility(View.VISIBLE); //avisa que não tem registro
     }
 }
