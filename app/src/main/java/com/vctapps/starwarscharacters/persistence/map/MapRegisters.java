@@ -93,6 +93,9 @@ public class MapRegisters implements Map<Register> {
             reg.setLink(cursor.getString(
                     cursor.getColumnIndex(Registers.COLUMN_LINK)
             ));
+            reg.setCharacterName(cursor.getString(
+                    cursor.getColumnIndex(Registers.COLUMN_CHARACTER_NAME)
+            ));
             reg.setLat(cursor.getDouble(
                     cursor.getColumnIndex(Registers.COLUMN_LAT)
             ));

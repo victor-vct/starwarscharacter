@@ -15,11 +15,11 @@ import java.util.List;
  * Classe responsável por fazer acesso ao DB
  */
 
-public class CharacterDAO extends BaseDAO<Register> {
+public class RegisterDAO extends BaseDAO<Register> {
 
     private MapRegisters map;
 
-    public CharacterDAO(Context context) {
+    public RegisterDAO(Context context) {
         super(context);
         map = new MapRegisters();
     }
