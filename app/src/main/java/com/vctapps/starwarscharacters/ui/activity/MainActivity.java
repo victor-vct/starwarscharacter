@@ -1,6 +1,8 @@
 package com.vctapps.starwarscharacters.ui.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,7 +23,8 @@ import com.vctapps.starwarscharacters.ui.adapter.RegisterAdapter;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnFinish<List<Register>>{
+public class MainActivity extends AppCompatActivity
+        implements OnFinish<List<Register>>, View.OnClickListener{
 
     private static final String TAG = "mainDebug";
     private RecyclerView recycler;
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements OnFinish<List<Reg
     private RegistersPresenter presenter;
     private ViewGroup noCharacter;
     private ViewGroup progressLayout;
+
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements OnFinish<List<Reg
         recycler = (RecyclerView) findViewById(R.id.recycler_main_list);
         managerLayout = new LinearLayoutManager(this);
         recycler.setLayoutManager(managerLayout);
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(this);
 
         presenter = new RegistersPresenter(this);
         noCharacter.setVisibility(View.GONE);
@@ -72,5 +80,14 @@ public class MainActivity extends AppCompatActivity implements OnFinish<List<Reg
     public void onError() {
         progressLayout.setVisibility(View.GONE); //desabilita a tela com progress view
         noCharacter.setVisibility(View.VISIBLE); //avisa que não tem registro
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.fab:
+                Intent qrCodeScan = new Intent(this, BarcodeActivity.class);
+                startActivity(qrCodeScan);
+        }
     }
 }
