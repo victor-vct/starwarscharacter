@@ -1,4 +1,4 @@
-package com.vctapps.starwarscharacters.service;
+package com.vctapps.starwarscharacters.util;
 
 import android.util.Log;
 

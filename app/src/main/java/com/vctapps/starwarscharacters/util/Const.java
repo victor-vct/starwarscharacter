@@ -6,5 +6,5 @@ package com.vctapps.starwarscharacters.util;
 
 public class Const {
 
-    public static final String BASE_URL = "http://www.swapi.co/api/people";
+    public static final String BASE_URL = "http://www.swapi.co/api/people/";
 }

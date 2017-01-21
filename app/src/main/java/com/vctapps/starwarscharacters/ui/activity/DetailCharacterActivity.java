@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.vctapps.starwarscharacters.R;
+import com.vctapps.starwarscharacters.model.Character;
 import com.vctapps.starwarscharacters.model.Register;
+import com.vctapps.starwarscharacters.service.ManagerRegister;
+import com.vctapps.starwarscharacters.service.OnFinish;
 
 public class DetailCharacterActivity extends AppCompatActivity {
 
@@ -22,6 +25,20 @@ public class DetailCharacterActivity extends AppCompatActivity {
             register = (Register) getIntent().getExtras().getSerializable(CHARACTER_FOR_DETAIL);
 
             Log.d(TAG, "Registro recebido: " + register.getLink());
+
+            ManagerRegister manager = new ManagerRegister(this);
+
+            manager.getCharacter(register, new OnFinish<Character>() {
+                @Override
+                public void onSuccess(Character character) {
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
         }
     }
 }
