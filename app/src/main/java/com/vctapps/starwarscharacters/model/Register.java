@@ -1,10 +1,12 @@
 package com.vctapps.starwarscharacters.model;
 
+import java.io.Serializable;
+
 /**
  * Class Register modelo para informações de um registro no banco
  */
 
-public class Register {
+public class Register implements Serializable{
 
     private int cod;
     private String userName;

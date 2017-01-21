@@ -20,18 +20,29 @@ import java.util.List;
 public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.MyViewHolder> {
 
     private List<Register> mRegisters;
-    private LayoutInflater inflater;
+    private LayoutInflater mInflater;
+    private OnClickItem mOnClickItem;
+
+    public interface OnClickItem{
+        void onItemSelected(int position);
+        void onLongItemSelected(int position);
+    }
 
     public RegisterAdapter(Context context, List<Register> registers){
         mRegisters = registers;
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    public void setOnClickItem(OnClickItem onClickItem) {
+        this.mOnClickItem = onClickItem;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.adapter_main_list, parent, false);
+        View view = mInflater.inflate(R.layout.adapter_main_list, parent, false);
 
         MyViewHolder holder = new MyViewHolder(view);
+        if(mOnClickItem != null) holder.setListener(mOnClickItem);
 
         return holder;
     }
@@ -66,6 +77,23 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.MyView
             userName = (TextView) view.findViewById(R.id.text_main_list_user_name);
             link = (TextView) view.findViewById(R.id.text_main_list_link);
             characterName = (TextView) view.findViewById(R.id.text_main_list_character_name);
+        }
+
+        public void setListener(final OnClickItem onClickItem){
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onClickItem.onItemSelected(getAdapterPosition());
+                }
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    onClickItem.onLongItemSelected(getAdapterPosition());
+                    return true;
+                }
+            });
         }
     }
 }

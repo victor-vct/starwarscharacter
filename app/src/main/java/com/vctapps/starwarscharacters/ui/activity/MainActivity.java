@@ -26,7 +26,7 @@ import com.vctapps.starwarscharacters.ui.adapter.RegisterAdapter;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
-        implements OnFinish<List<Register>>, View.OnClickListener{
+        implements OnFinish<List<Register>>, View.OnClickListener, RegisterAdapter.OnClickItem{
 
     private static final String TAG = "mainDebug";
     private static final int REQUEST_QR_CODE = 1;
@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity
         }else{
             this.registers = registers;
             adapter = new RegisterAdapter(this, registers);
+            adapter.setOnClickItem(this);
             recycler.setAdapter(adapter);
             progressLayout.setVisibility(View.GONE);
             Log.d(TAG, "mainActivity - onSuccess: numero de registros: " + registers.size());
@@ -157,5 +158,23 @@ public class MainActivity extends AppCompatActivity
                 showMessage("Não foi possível salvar");
             }
         };
+    }
+
+    /**
+     * Callback chamando quando um item da lista é chamado
+     * @param position
+     */
+    @Override
+    public void onItemSelected(int position) {
+        Log.d(TAG, "Item da lista selecionado: " + position);
+        //coloca um registro na intent e inicia uma activity
+        Intent detailCharacter = new Intent(this, DetailCharacterActivity.class);
+        detailCharacter.putExtra(DetailCharacterActivity.CHARACTER_FOR_DETAIL, registers.get(position));
+        startActivity(detailCharacter);
+    }
+
+    @Override
+    public void onLongItemSelected(int position) {
+        Log.d(TAG, "Longo click no item da lista: " + position);
     }
 }
