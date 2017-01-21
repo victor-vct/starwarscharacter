@@ -9,7 +9,7 @@ import com.vctapps.starwarscharacters.service.OnFinish;
 import java.util.List;
 
 /**
- * Created by Victor on 19/01/2017.
+ * Presenter que redireciona para os serviços corretos
  */
 
 public class RegistersPresenter {
@@ -21,6 +21,10 @@ public class RegistersPresenter {
     }
 
     public void getAllRegisters(OnFinish<List<Register>> callback){
-        mManager.getRegistes(callback);
+        mManager.getRegisters(callback);
+    }
+
+    public void saveRegister(Register register, OnFinish<Register> callback){
+        mManager.saveRegister(register, callback);
     }
 }

@@ -1,7 +1,7 @@
 package com.vctapps.starwarscharacters.model;
 
 /**
- * Class Register created on 18/01/2017.
+ * Class Register modelo para informações de um registro no banco
  */
 
 public class Register {
