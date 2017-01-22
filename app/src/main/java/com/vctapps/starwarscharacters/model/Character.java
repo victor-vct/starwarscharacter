@@ -41,7 +41,7 @@ public class Character {
     }
 
     public String getHeight() {
-        return height;
+        return height + " cm";
     }
 
     public void setHeight(String height) {
@@ -49,7 +49,7 @@ public class Character {
     }
 
     public String getMass() {
-        return mass;
+        return mass + " Kg";
     }
 
     public void setMass(String mass) {

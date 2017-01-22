@@ -1,0 +1,141 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.vctapps.starwarscharacters.ui.fragment.CharacterAboutFragment">
+
+    <TextView
+        android:text="Nome: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_title_character_name"
+        style="@style/TitleText"/>
+
+    <TextView
+        android:text="Luke Skywalker "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_character_name"
+        android:layout_below="@+id/text_title_character_name"
+        style="@style/DescribeText"/>
+
+    <TextView
+        android:text="Altura: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_title_character_height"
+        android:layout_below="@+id/text_character_name"
+        style="@style/TitleText"/>
+
+    <TextView
+        android:text="1.72 m "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_character_height"
+        android:layout_below="@+id/text_title_character_height"
+        style="@style/DescribeText"/>
+
+    <TextView
+        android:text="Peso: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_title_character_mass"
+        android:layout_below="@+id/text_character_height"
+        style="@style/TitleText"/>
+
+    <TextView
+        android:text="77 Kg "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_character_mass"
+        android:layout_below="@+id/text_title_character_mass"
+        style="@style/DescribeText"/>
+
+    <TextView
+        android:text="Cor do cabelo: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_title_character_hair_color"
+        android:layout_below="@+id/text_character_mass"
+        style="@style/TitleText"/>
+
+    <TextView
+        android:text="Loiro "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_character_hair_color"
+        android:layout_below="@+id/text_title_character_hair_color"
+        style="@style/DescribeText"/>
+
+    <TextView
+        android:text="Pele: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_title_character_skin_color"
+        android:layout_below="@+id/text_character_hair_color"
+        style="@style/TitleText"/>
+
+    <TextView
+        android:text="Claro "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_character_skin_color"
+        android:layout_below="@+id/text_title_character_skin_color"
+        style="@style/DescribeText"/>
+
+    <TextView
+        android:text="Cor do olho: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_title_character_eye_color"
+        android:layout_below="@+id/text_character_skin_color"
+        style="@style/TitleText"/>
+
+    <TextView
+        android:text="Azul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_character_eye_color"
+        android:layout_below="@+id/text_title_character_eye_color"
+        style="@style/DescribeText"/>
+
+    <TextView
+        android:text="Ano de Nascimento: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_title_character_birthday_year"
+        android:layout_below="@+id/text_character_eye_color"
+        style="@style/TitleText"/>
+
+    <TextView
+        android:text="19BBY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_character_birthday_year"
+        android:layout_below="@+id/text_title_character_birthday_year"
+        style="@style/DescribeText"/>
+
+    <TextView
+        android:text="Genero: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_title_character_gender"
+        android:layout_below="@+id/text_character_birthday_year"
+        style="@style/TitleText"/>
+
+    <TextView
+        android:text="Masculino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_character_gender"
+        android:layout_below="@id/text_title_character_gender"
+        style="@style/DescribeText"/>
+
+</RelativeLayout>
+
+</ScrollView>

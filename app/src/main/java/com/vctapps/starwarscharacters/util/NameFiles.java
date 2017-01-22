@@ -10,6 +10,7 @@ import com.vctapps.starwarscharacters.model.Register;
 public class NameFiles {
 
     public static String MakeCharacterJsonName(Register register){
-        return register.getUserName() + "@" + register.getCharacterName();
+        //return register.getUserName() + "@" + register.getCharacterName();
+        return register.getCharacterName();
     }
 }

@@ -96,8 +96,8 @@ public class ManagerRegister {
         if(!StatusConnection.isConnected(mContext)){
             //Pega arquivo em cache, caso exista
             Character character = getCacheFile(register);
-            callback.onSuccess(character);
             Log.d(TAG, "Personagem recuperado do cache: " + character.getName());
+            callback.onSuccess(character);
         }else{
             //Existe conexão, tenta realizar o download
             Retrofit retrofit = new Retrofit.Builder()
@@ -131,6 +131,8 @@ public class ManagerRegister {
                         Log.d(TAG, json);
 
                         ManagerJsonFiles.save(mContext, json, NameFiles.MakeCharacterJsonName(register));
+
+                        callback.onSuccess(person);
                     }
                 }
 

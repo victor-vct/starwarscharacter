@@ -66,14 +66,15 @@ public class MainActivity extends AppCompatActivity
         presenter = new RegistersPresenter(this);
         noCharacter.setVisibility(View.GONE);
 
-        startRequestListRegisters();
-
         //TODO deletar essa parte do código, feita apenas para exemplo
         Register register = PerfilSingleton.getInstance();
         register.setUserName("Victor");
+    }
 
-        boolean hasJson = ManagerJsonFiles.hasJsonStorage(this, "Victor@Luke Skywalker");
-        Log.d(TAG, "Json salvo: " + hasJson);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startRequestListRegisters();
     }
 
     /**
