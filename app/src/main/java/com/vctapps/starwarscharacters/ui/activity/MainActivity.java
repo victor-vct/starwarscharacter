@@ -19,6 +19,7 @@ import com.vctapps.starwarscharacters.model.PerfilSingleton;
 import com.vctapps.starwarscharacters.model.Register;
 import com.vctapps.starwarscharacters.persistence.ConstDb;
 import com.vctapps.starwarscharacters.persistence.dao.RegisterDAO;
+import com.vctapps.starwarscharacters.persistence.files.ManagerJsonFiles;
 import com.vctapps.starwarscharacters.presenter.RegistersPresenter;
 import com.vctapps.starwarscharacters.service.OnFinish;
 import com.vctapps.starwarscharacters.ui.adapter.RegisterAdapter;
@@ -70,6 +71,9 @@ public class MainActivity extends AppCompatActivity
         //TODO deletar essa parte do código, feita apenas para exemplo
         Register register = PerfilSingleton.getInstance();
         register.setUserName("Victor");
+
+        boolean hasJson = ManagerJsonFiles.hasJsonStorage(this, "Victor@Luke Skywalker");
+        Log.d(TAG, "Json salvo: " + hasJson);
     }
 
     /**

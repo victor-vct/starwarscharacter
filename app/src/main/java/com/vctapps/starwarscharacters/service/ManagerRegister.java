@@ -4,10 +4,13 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.vctapps.starwarscharacters.model.Character;
 import com.vctapps.starwarscharacters.model.Register;
 import com.vctapps.starwarscharacters.persistence.dao.RegisterDAO;
+import com.vctapps.starwarscharacters.persistence.files.ManagerJsonFiles;
 import com.vctapps.starwarscharacters.util.Const;
+import com.vctapps.starwarscharacters.util.NameFiles;
 import com.vctapps.starwarscharacters.util.StatusConnection;
 
 import java.util.List;
@@ -84,10 +87,18 @@ public class ManagerRegister {
         }.execute(register);
     }
 
-    public void getCharacter(Register register, OnFinish<Character> callback){
+    public void getCharacter(final Register register, final OnFinish<Character> callback){
+        // Primeiro verifica se existe conexão
+        // Se existe baixa e salva o arquivo
+        // Se não existe verifica se existe arquivo salvo e recupera ele
+
         if(!StatusConnection.isConnected(mContext)){
-            //TODO fazer aviso que não há conexão
+            //Pega arquivo em cache, caso exista
+            Character character = getCacheFile(register);
+            callback.onSuccess(character);
+            Log.d(TAG, "Personagem recuperado do cache: " + character.getName());
         }else{
+            //Existe conexão, tenta realizar o download
             Retrofit retrofit = new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl(Const.BASE_URL)
@@ -100,24 +111,53 @@ public class ManagerRegister {
             getCharacter.enqueue(new Callback<Character>() {
                 @Override
                 public void onResponse(Call<Character> call, Response<Character> response) {
-                    if(!response.isSuccessful()){
-                        Log.d(TAG, "Não foi possível baixar o personagem." + response.message() + "ErrorBody" + response.errorBody());
-                        //TODO tratar erro
+                    if(!response.isSuccessful() || response.body() == null){
+                        Log.d(TAG, "Erro ao fazer download do personagem. onSuccess: " + response.message());
+                        callback.onError();
+                        return;
                     }else{
                         Character person = response.body();
-                        if(person != null){
-                            Log.d(TAG, "Personagem baixado: " + person.getName());
-                        }else{
-                            Log.d(TAG, "Erro ao baixar personagem");
-                        }
+                        Log.d(TAG, "Personagem baixado: " + person.getName());
+                        //Atualiza no banco para armazenar o nome do personagem
+                        RegisterDAO dao = new RegisterDAO(mContext);
+                        register.setCharacterName(person.getName());
+                        dao.update(register);
+
+                        //Transforma o json em String para armazenar em cache
+                        String json = new Gson().toJson(person);
+
+                        Log.d(TAG, json);
+
+                        ManagerJsonFiles.save(mContext, json, NameFiles.MakeCharacterJsonName(register));
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Character> call, Throwable t) {
-
+                    Log.d(TAG, "Erro ao fazer download do personagem. onFailure: " + t.getMessage());
+                    callback.onError();
                 }
             });
         }
+    }
+
+    /**
+     * Verifica se existe arquivo salvo e recupera.
+     * @param register instancia com dados base para recupearar o arquivo salvo
+     * @return Character caso sucesso, null caso contrário;
+     */
+    private Character getCacheFile(Register register){
+        if(register.getCharacterName() != null && !register.getCharacterName().equals("") &&
+                ManagerJsonFiles.hasJsonStorage(mContext, NameFiles.MakeCharacterJsonName(register))){
+            Character character = new Gson().fromJson(ManagerJsonFiles.get(
+                    mContext,
+                    NameFiles.MakeCharacterJsonName(register)),
+                    Character.class);
+
+            Log.d(TAG, "Personagem recuperado de um arquivo JSON");
+
+            return character;
+        }
+        return null;
     }
 }
