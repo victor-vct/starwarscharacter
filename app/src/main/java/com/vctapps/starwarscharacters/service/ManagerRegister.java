@@ -13,6 +13,7 @@ import com.vctapps.starwarscharacters.util.Const;
 import com.vctapps.starwarscharacters.util.NameFiles;
 import com.vctapps.starwarscharacters.util.StatusConnection;
 
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -124,6 +125,7 @@ public class ManagerRegister {
                         dao.update(register);
 
                         //Transforma o json em String para armazenar em cache
+                        person.setLastRefresh(Calendar.getInstance().getTimeInMillis());
                         String json = new Gson().toJson(person);
 
                         Log.d(TAG, json);

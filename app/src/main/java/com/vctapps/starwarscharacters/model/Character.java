@@ -30,6 +30,7 @@ public class Character {
     private List<String> species;
     private List<String> vehicles;
     private List<String> starships;
+    private long lastRefresh;
 
     public String getName() {
         return name;
@@ -157,5 +158,13 @@ public class Character {
 
     public void setStarships(List<String> starships) {
         this.starships = starships;
+    }
+
+    public long getLastRefresh() {
+        return lastRefresh;
+    }
+
+    public void setLastRefresh(long lastRefresh) {
+        this.lastRefresh = lastRefresh;
     }
 }
