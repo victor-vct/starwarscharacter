@@ -41,7 +41,6 @@ public class ManagerRegister {
         new AsyncTask<Void, Void, List<Register>>(){
             @Override
             protected List<Register> doInBackground(Void... voids) {
-                //TODO criar logica para ver
                 return dao.readAll();
             }
 

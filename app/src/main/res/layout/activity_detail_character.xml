@@ -31,4 +31,6 @@
 
     <include layout="@layout/progress_layout" />
 
+    <include layout="@layout/no_character"/>
+
 </RelativeLayout>

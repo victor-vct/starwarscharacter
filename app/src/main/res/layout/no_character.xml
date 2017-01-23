@@ -2,22 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/no_registers">
+    android:id="@+id/no_character">
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/ic_yoda"
+        android:src="@drawable/darth_vader"
         android:layout_above="@+id/text_no_register"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="8dp"/>
 
+    <!-- TODO jogar todas Strings no arquivo strings -->
     <TextView
-        android:text="Nenhum registro parece ter.\nAdicionar um novo você deve..."
+        android:text="Nenhum personagem foi encontrado.\nMas você pode vim para o lado negro da força!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:id="@+id/text_no_register"
+        android:layout_margin="8dp"
         android:textAlignment="center"
         android:textSize="22dp"/>
 

@@ -25,12 +25,16 @@ public class DetailCharacterActivity extends AppCompatActivity
 
     private static final String TAG = "detailCharacterDebug";
     public static final String CHARACTER_FOR_DETAIL = "com.vctapps.characterfordetails";
+
     private Register register;
+    private CharacterObservable observable;
+
+    //Views
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private ViewGroup progressLayout;
+    private ViewGroup noCharacterLayout;
     private AboutCharacterAdapter mAdapter;
-    private CharacterObservable observable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +42,13 @@ public class DetailCharacterActivity extends AppCompatActivity
         setContentView(R.layout.activity_detail_character);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         progressLayout = (ViewGroup) findViewById(R.id.progress_layout);
+        noCharacterLayout = (ViewGroup) findViewById(R.id.no_character);
         mViewPager = (ViewPager) findViewById(R.id.viewpager_detail_character);
         mTabLayout = (TabLayout) findViewById(R.id.tablayout_detail_character);
+
+        noCharacterLayout.setVisibility(View.GONE);
 
         //Observable para atualizar as informações em todos fragments do viewpager
         observable = new CharacterObservable();
@@ -55,6 +61,9 @@ public class DetailCharacterActivity extends AppCompatActivity
             ManagerRegister manager = new ManagerRegister(this);
 
             manager.getCharacter(register, this);
+        }else{
+            noCharacterLayout.setVisibility(View.VISIBLE);
+            progressLayout.setVisibility(View.GONE);
         }
     }
 
@@ -74,12 +83,15 @@ public class DetailCharacterActivity extends AppCompatActivity
      */
     @Override
     public void onSuccess(Character character) {
-        //TODO fazer a tela de loading desaparecer
-        Log.d(TAG, "Character recebido na activity: " + character.getName());
-        mAdapter = new AboutCharacterAdapter(getSupportFragmentManager(), PerfilSingleton.getInstance(), character, observable);
-        mViewPager.setAdapter(mAdapter);
-        mTabLayout.setupWithViewPager(mViewPager);
-        observable.setCharacter(character);
+        if(character != null) {
+            Log.d(TAG, "Character recebido na activity: " + character.getName());
+            mAdapter = new AboutCharacterAdapter(getSupportFragmentManager(), PerfilSingleton.getInstance(), character, observable);
+            mViewPager.setAdapter(mAdapter);
+            mTabLayout.setupWithViewPager(mViewPager);
+            observable.setCharacter(character);
+        }else{
+            noCharacterLayout.setVisibility(View.VISIBLE);
+        }
         progressLayout.setVisibility(View.GONE);
     }
 
@@ -88,8 +100,8 @@ public class DetailCharacterActivity extends AppCompatActivity
      */
     @Override
     public void onError() {
-        //TODO fazer uma tela de erro aparecer
-        Toast.makeText(this, "Não foi possível atualizar as informações", Toast.LENGTH_SHORT).show();
-        finish();
+        noCharacterLayout.setVisibility(View.VISIBLE);
+        progressLayout.setVisibility(View.GONE);
+        mTabLayout.setVisibility(View.GONE);
     }
 }
