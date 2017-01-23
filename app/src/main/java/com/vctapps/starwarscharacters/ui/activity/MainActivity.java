@@ -3,6 +3,7 @@ package com.vctapps.starwarscharacters.ui.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.location.Location;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.vctapps.starwarscharacters.R;
 import com.vctapps.starwarscharacters.model.PerfilSingleton;
 import com.vctapps.starwarscharacters.model.Register;
 import com.vctapps.starwarscharacters.presenter.RegistersPresenter;
+import com.vctapps.starwarscharacters.service.LastLocationService;
 import com.vctapps.starwarscharacters.service.OnFinish;
 import com.vctapps.starwarscharacters.ui.adapter.RegisterAdapter;
 
@@ -124,9 +126,25 @@ public class MainActivity extends AppCompatActivity
             //recupera o link lido do QRCode
             String link = data.getStringExtra(BarcodeActivity.RESULT_REQUEST_QR_CODE);
             Log.d(TAG, "QRCode recebido: " + link);
-            Register register = PerfilSingleton.getInstance();
+            final Register register = PerfilSingleton.getInstance();
             register.setLink(link);
-            presenter.saveRegister(register, getCallbackForSave());
+            LastLocationService lastLocationService = new LastLocationService(this);
+            //TODO retirar callback daqui e fazer algo mais elegante
+            lastLocationService.getLocation(new OnFinish<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    register.setLat(location.getLatitude());
+                    register.setLng(location.getLongitude());
+                    Log.d(TAG, "Geolocation: " + location.getLatitude() + " | " + location.getLongitude());
+                    presenter.saveRegister(register, getCallbackForSave());
+                }
+
+                @Override
+                public void onError() {
+                    //TODO implementar um aviso que não foi possível pegar geolocalização
+                }
+            });
+
         }
     }
 

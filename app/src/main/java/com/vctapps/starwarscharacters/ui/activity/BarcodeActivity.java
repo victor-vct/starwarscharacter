@@ -49,7 +49,7 @@ public class BarcodeActivity extends AppCompatActivity {
      * Faz a requisição de permissão da camera
      */
     private void requestPermissionCamera(){
-        final String[] permissions = new String[]{Manifest.permission.CAMERA};
+        final String[] permissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION};
 
         if(!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)){
             ActivityCompat.requestPermissions(this, permissions, ID_PERMISSIONS);
