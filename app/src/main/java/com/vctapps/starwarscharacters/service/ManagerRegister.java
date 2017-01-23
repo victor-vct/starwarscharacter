@@ -93,11 +93,15 @@ public class ManagerRegister {
         // Se existe baixa e salva o arquivo
         // Se não existe verifica se existe arquivo salvo e recupera ele
 
-        if(!StatusConnection.isConnected(mContext)){
+        if(!StatusConnection.isConnected(mContext)) {
             //Pega arquivo em cache, caso exista
             Character character = getCacheFile(register);
-            Log.d(TAG, "Personagem recuperado do cache: " + character.getName());
-            callback.onSuccess(character);
+            if (character != null) {
+                Log.d(TAG, "Personagem recuperado do cache: " + character.getName());
+                callback.onSuccess(character);
+            }else{
+                callback.onError();
+            }
         }else{
             //Existe conexão, tenta realizar o download
             Retrofit retrofit = new Retrofit.Builder()

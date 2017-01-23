@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.vctapps.starwarscharacters.R;
@@ -26,6 +28,7 @@ public class DetailCharacterActivity extends AppCompatActivity
     private Register register;
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
+    private ViewGroup progressLayout;
     private AboutCharacterAdapter mAdapter;
     private CharacterObservable observable;
 
@@ -37,6 +40,7 @@ public class DetailCharacterActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        progressLayout = (ViewGroup) findViewById(R.id.progress_layout);
         mViewPager = (ViewPager) findViewById(R.id.viewpager_detail_character);
         mTabLayout = (TabLayout) findViewById(R.id.tablayout_detail_character);
 
@@ -76,6 +80,7 @@ public class DetailCharacterActivity extends AppCompatActivity
         mViewPager.setAdapter(mAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
         observable.setCharacter(character);
+        progressLayout.setVisibility(View.GONE);
     }
 
     /**
@@ -85,5 +90,6 @@ public class DetailCharacterActivity extends AppCompatActivity
     public void onError() {
         //TODO fazer uma tela de erro aparecer
         Toast.makeText(this, "Não foi possível atualizar as informações", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

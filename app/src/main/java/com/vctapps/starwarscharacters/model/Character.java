@@ -26,7 +26,7 @@ public class Character {
     private String created;
     private String edited;
     private String url;
-    private List<String> films;
+    private String[] films;
     private List<String> species;
     private List<String> vehicles;
     private List<String> starships;
@@ -128,11 +128,11 @@ public class Character {
         this.url = url;
     }
 
-    public List<String> getFilms() {
+    public String[] getFilms() {
         return films;
     }
 
-    public void setFilms(List<String> films) {
+    public void setFilms(String[] films) {
         this.films = films;
     }
 
