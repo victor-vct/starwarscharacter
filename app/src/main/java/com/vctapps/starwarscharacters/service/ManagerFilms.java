@@ -4,10 +4,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.squareup.picasso.Picasso;
 import com.vctapps.starwarscharacters.model.Film;
 import com.vctapps.starwarscharacters.persistence.files.ManagerJsonFiles;
-import com.vctapps.starwarscharacters.util.Const;
 import com.vctapps.starwarscharacters.util.NameFiles;
 import com.vctapps.starwarscharacters.util.StatusConnection;
 
