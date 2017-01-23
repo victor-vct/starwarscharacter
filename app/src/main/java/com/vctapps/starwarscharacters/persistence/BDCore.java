@@ -24,6 +24,6 @@ public class BDCore extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        //Do something if changes in database
+        //Fazer algo caso mude as tabelas
     }
 }
