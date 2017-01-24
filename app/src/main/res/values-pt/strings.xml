@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Star Wars - Personagens</string>
+
+    <!-- Tela login -->
+    <string name="hint_user_name">Nome</string>
+    <string name="btn_enter_login">Entrar</string>
+
+    <!-- Fragment About -->
+    <string name="infos_refresh_in">Informações atualizadas em:</string>
+    <string name="read_qr_code">Leitura do QRCode</string>
+    <string name="lng">Longitude</string>
+    <string name="lat">Latitude</string>
+
+    <!-- Character About -->
+    <string name="character_name">Nome</string>
+    <string name="character_height">Altura</string>
+    <string name="character_mass">Peso</string>
+    <string name="character_hair_color">Cor do cabelo</string>
+    <string name="character_skin_color">Pele</string>
+    <string name="character_eye_color">Cor do olho</string>
+    <string name="character_year_birthday">Ano de Nascimento</string>
+    <string name="character_gender">Gênero</string>
+
+    <!-- Avisos -->
+    <string name="warning_no_character">Nenhum personagem foi encontrado.\nMas você pode vim para o lado negro da força!</string>
+    <string name="warning_no_register">Nenhum registro parece ter.\nAdicionar um novo você deve...</string>
+    <string name="warning_wait">Aguarde</string>
+</resources>

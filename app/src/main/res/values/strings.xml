@@ -1,6 +1,29 @@
 <resources>
     <string name="app_name">Star Wars Characters</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Tela login -->
+    <string name="hint_user_name">Name</string>
+    <string name="btn_enter_login">Enter</string>
+
+    <!-- Fragment About -->
+    <string name="infos_refresh_in">Updated informations in:</string>
+    <string name="read_qr_code">Reading QRCode</string>
+    <string name="lng">Longitude</string>
+    <string name="lat">Latitude</string>
+
+    <!-- Character About -->
+    <string name="character_name">Name</string>
+    <string name="character_height">Height</string>
+    <string name="character_mass">Mass</string>
+    <string name="character_hair_color">Hair color</string>
+    <string name="character_skin_color">Skin color</string>
+    <string name="character_eye_color">Eye color</string>
+    <string name="character_year_birthday">Birthday year</string>
+    <string name="character_gender">Gender</string>
+
+    <!-- Avisos -->
+    <string name="warning_no_character">No character found.\nBut you can come to the dark side of the force!</string>
+    <string name="warning_no_register">No register found.\nAdd a new you must...</string>
+    <string name="warning_wait">Wait</string>
+
 </resources>

@@ -14,7 +14,7 @@
 
     <!-- TODO jogar todas Strings no arquivo strings -->
     <TextView
-        android:text="Nenhum personagem foi encontrado.\nMas você pode vim para o lado negro da força!"
+        android:text="@string/warning_no_character"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

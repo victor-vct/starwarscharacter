@@ -7,20 +7,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Informações atualzadas em:"
+        android:text="@string/infos_refresh_in"
         android:id="@+id/text_title_refresh_in"
         style="@style/TitleText"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="22/01/2017 14:07:58"
         android:id="@+id/text_refresh_in"
         android:layout_below="@+id/text_title_refresh_in"
         style="@style/DescribeText"/>
 
     <TextView
-        android:text="Captura da URL"
+        android:text="@string/read_qr_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_title_info_url"
@@ -30,7 +29,7 @@
         android:textSize="18sp"/>
 
     <TextView
-        android:text="Longitude: "
+        android:text="@string/lng"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_title_lng"
@@ -38,7 +37,7 @@
         style="@style/TitleText"/>
 
     <TextView
-        android:text="Latitude: "
+        android:text="@string/lat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_title_lat"
@@ -46,7 +45,6 @@
         style="@style/TitleText"/>
 
     <TextView
-        android:text="14.5646546"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_lng"
@@ -54,7 +52,6 @@
         style="@style/DescribeText"/>
 
     <TextView
-        android:text="-15.545646"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_lat"
