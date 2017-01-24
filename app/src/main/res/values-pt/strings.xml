@@ -26,4 +26,6 @@
     <string name="warning_no_character">Nenhum personagem foi encontrado.\nMas você pode vim para o lado negro da força!</string>
     <string name="warning_no_register">Nenhum registro parece ter.\nAdicionar um novo você deve...</string>
     <string name="warning_wait">Aguarde</string>
+    <string name="qr_code_available_in">QRCodes disponíveis em: vctapps.com/sw-qrcodes/</string>
+
 </resources>

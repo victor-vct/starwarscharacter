@@ -25,5 +25,7 @@
     <string name="warning_no_character">No character found.\nBut you can come to the dark side of the force!</string>
     <string name="warning_no_register">No register found.\nAdd a new you must...</string>
     <string name="warning_wait">Wait</string>
+    <string name="qr_code_available_in">QRCodes available in: vctapps.com/sw-qrcodes/</string>
+
 
 </resources>

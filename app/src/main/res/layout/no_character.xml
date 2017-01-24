@@ -12,7 +12,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="8dp"/>
 
-    <!-- TODO jogar todas Strings no arquivo strings -->
     <TextView
         android:text="@string/warning_no_character"
         android:layout_width="wrap_content"
