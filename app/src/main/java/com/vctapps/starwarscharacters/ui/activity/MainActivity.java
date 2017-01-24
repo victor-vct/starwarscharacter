@@ -30,6 +30,7 @@ import com.vctapps.starwarscharacters.service.LastLocationService;
 import com.vctapps.starwarscharacters.service.OnFinish;
 import com.vctapps.starwarscharacters.ui.adapter.RegisterAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
@@ -110,6 +111,7 @@ public class MainActivity extends AppCompatActivity
             adapter.setOnClickItem(this);
             recycler.setAdapter(adapter);
             progressLayout.setVisibility(View.GONE);
+            noCharacter.setVisibility(View.GONE);
             Log.d(TAG, "mainActivity - onSuccess: numero de registros: " + registers.size());
         }
     }
@@ -164,6 +166,14 @@ public class MainActivity extends AppCompatActivity
                 if(registers != null){ //Add registro na lista
                     registers.add(register);
                     adapter.notifyItemInserted(registers.size() - 1);
+                }else{
+                    registers = new ArrayList<>();
+                    registers.add(register);
+                    adapter = new RegisterAdapter(MainActivity.this, registers);
+                    adapter.setOnClickItem(MainActivity.this);
+                    recycler.setAdapter(adapter);
+                    progressLayout.setVisibility(View.GONE);
+                    noCharacter.setVisibility(View.GONE);
                 }
             }
 
