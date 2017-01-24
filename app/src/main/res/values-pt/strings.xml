@@ -3,7 +3,7 @@
     <string name="app_name">Star Wars - Personagens</string>
 
     <!-- Tela login -->
-    <string name="hint_user_name">Nome</string>
+    <string name="hint_user_name">Seu nome, padawan</string>
     <string name="btn_enter_login">Entrar</string>
 
     <!-- Fragment About -->
