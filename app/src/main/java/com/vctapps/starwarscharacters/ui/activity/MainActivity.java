@@ -1,5 +1,6 @@
 package com.vctapps.starwarscharacters.ui.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,6 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.EmptyMultiplePermissionsListener;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.vctapps.starwarscharacters.R;
 import com.vctapps.starwarscharacters.model.PerfilSingleton;
 import com.vctapps.starwarscharacters.model.Register;
@@ -64,6 +71,12 @@ public class MainActivity extends AppCompatActivity
 
         presenter = new RegistersPresenter(this);
         noCharacter.setVisibility(View.GONE);
+
+        //Solicita as permissões de camera e localização
+        Dexter.withActivity(this)
+                .withPermissions(Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION)
+                .withListener(new EmptyMultiplePermissionsListener())
+                .check();
 
         //TODO deletar essa parte do código, feita apenas para exemplo
         Register register = PerfilSingleton.getInstance();
@@ -126,25 +139,8 @@ public class MainActivity extends AppCompatActivity
             //recupera o link lido do QRCode
             String link = data.getStringExtra(BarcodeActivity.RESULT_REQUEST_QR_CODE);
             Log.d(TAG, "QRCode recebido: " + link);
-            final Register register = PerfilSingleton.getInstance();
-            register.setLink(link);
-            LastLocationService lastLocationService = new LastLocationService(this);
-            //TODO retirar callback daqui e fazer algo mais elegante
-            lastLocationService.getLocation(new OnFinish<Location>() {
-                @Override
-                public void onSuccess(Location location) {
-                    register.setLat(location.getLatitude());
-                    register.setLng(location.getLongitude());
-                    Log.d(TAG, "Geolocation: " + location.getLatitude() + " | " + location.getLongitude());
-                    presenter.saveRegister(register, getCallbackForSave());
-                }
 
-                @Override
-                public void onError() {
-                    //TODO implementar um aviso que não foi possível pegar geolocalização
-                }
-            });
-
+            presenter.saveRegisterWithUrl(link, getCallbackForSave());
         }
     }
 

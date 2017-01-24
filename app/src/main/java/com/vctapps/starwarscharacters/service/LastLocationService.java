@@ -21,6 +21,7 @@ import com.google.android.gms.location.LocationServices;
 public class LastLocationService implements GoogleApiClient.OnConnectionFailedListener,
         GoogleApiClient.ConnectionCallbacks, OnFinish<Location> {
 
+    private static final String TAG = "geofenceDebug";
     private OnFinish<Location> onFinish;
     private GoogleApiClient mApiClient;
     private Context context;
@@ -29,6 +30,10 @@ public class LastLocationService implements GoogleApiClient.OnConnectionFailedLi
         this.context = context;
     }
 
+    /**
+     * Método que inicia o processo de solicitação de geolocalização
+     * @param onFinish callback chamado ao ocorrer sucesso ou erro
+     */
     public void getLocation(OnFinish<Location> onFinish){
         this.onFinish = onFinish;
 
@@ -37,38 +42,52 @@ public class LastLocationService implements GoogleApiClient.OnConnectionFailedLi
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
+
+        mApiClient.connect();
+        Log.d(TAG, "Iniciando serviço de geolocalização");
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d(TAG, "onConnectionFailed");
         onError();
     }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
+        Log.d(TAG, "Serviço de geolização conectado com sucesso");
         //Verifica se existe permissão
         int check = ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION);
 
         if(check == PackageManager.PERMISSION_GRANTED){
+            Log.d(TAG, "Permissão para geolocalização: Ok");
             Location location = LocationServices.FusedLocationApi.getLastLocation(mApiClient);
             onSuccess(location);
         }else{
-            //TODO solicitar permissão de localização
-            //requestPermissionCamera();
+            Log.d(TAG, "Não existe permissão para acesso a geolozalição");
+            onError();
         }
-
+        mApiClient.disconnect();
     }
 
     @Override
     public void onConnectionSuspended(int i) {
+        Log.d(TAG, "onConnectionSuspended");
         onError();
     }
 
+    /**
+     * Método chamado internamento ao finalizar processo
+     * @param location Instancia com informações de localização
+     */
     @Override
     public void onSuccess(Location location) {
         if(onFinish != null) onFinish.onSuccess(location);
     }
 
+    /**
+     * Método chamado internamento ao ocorrer erro durante o processo
+     */
     @Override
     public void onError() {
         if(onFinish != null) onFinish.onError();

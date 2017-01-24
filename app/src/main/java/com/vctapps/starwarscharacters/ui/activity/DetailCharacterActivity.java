@@ -9,11 +9,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.vctapps.starwarscharacters.R;
 import com.vctapps.starwarscharacters.model.Character;
-import com.vctapps.starwarscharacters.model.PerfilSingleton;
 import com.vctapps.starwarscharacters.model.Register;
 import com.vctapps.starwarscharacters.model.CharacterObservable;
 import com.vctapps.starwarscharacters.service.ManagerRegister;
@@ -60,6 +58,7 @@ public class DetailCharacterActivity extends AppCompatActivity
 
             ManagerRegister manager = new ManagerRegister(this);
 
+            //Busca informações do personagem
             manager.getCharacter(register, this);
         }else{
             noCharacterLayout.setVisibility(View.VISIBLE);
@@ -85,7 +84,7 @@ public class DetailCharacterActivity extends AppCompatActivity
     public void onSuccess(Character character) {
         if(character != null) {
             Log.d(TAG, "Character recebido na activity: " + character.getName());
-            mAdapter = new AboutCharacterAdapter(getSupportFragmentManager(), PerfilSingleton.getInstance(), character, observable);
+            mAdapter = new AboutCharacterAdapter(getSupportFragmentManager(), register, character, observable);
             mViewPager.setAdapter(mAdapter);
             mTabLayout.setupWithViewPager(mViewPager);
             observable.setCharacter(character);
