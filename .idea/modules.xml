@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/StarWarsCharacters.iml" filepath="$PROJECT_DIR$/StarWarsCharacters.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/starwarscharacters.iml" filepath="$PROJECT_DIR$/starwarscharacters.iml" />
     </modules>
   </component>
 </project>

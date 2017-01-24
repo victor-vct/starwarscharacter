@@ -73,14 +73,10 @@ public class MainActivity extends AppCompatActivity
         noCharacter.setVisibility(View.GONE);
 
         //Solicita as permissões de camera e localização
-        Dexter.withActivity(this)
+        Dexter.withActivity(this) //TODO fazer aviso amigável avisando o pq das permissões
                 .withPermissions(Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION)
                 .withListener(new EmptyMultiplePermissionsListener())
                 .check();
-
-        //TODO deletar essa parte do código, feita apenas para exemplo
-        Register register = PerfilSingleton.getInstance();
-        register.setUserName("Victor");
     }
 
     @Override
@@ -93,7 +89,10 @@ public class MainActivity extends AppCompatActivity
      * Solicita lista de registro salvas no banco
      */
     private void startRequestListRegisters(){
-        if(presenter != null) presenter.getAllRegisters(this);
+        if(presenter != null) {
+            progressLayout.setVisibility(View.VISIBLE);
+            presenter.getAllRegisters(this);
+        }
     }
 
     /**
@@ -127,7 +126,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.fab:
+            case R.id.fab: //Botão para add novo registro
                 Intent qrCodeScan = new Intent(this, BarcodeActivity.class);
                 startActivityForResult(qrCodeScan, REQUEST_QR_CODE);
         }
@@ -191,6 +190,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onLongItemSelected(int position) {
+        //TODO fazer menu para deletar registro
         Log.d(TAG, "Longo click no item da lista: " + position);
     }
 }
