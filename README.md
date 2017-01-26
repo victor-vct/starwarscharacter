@@ -1,8 +1,9 @@
-# StarWars - Character #
+# StarWars - Characters #
 
 Aplicação que permite visualizar informações de personagem dos filmes Star Wars.
 Para adicionar novos personagens, deve ser lido uma URL a partir de QR Code.
 Acesse [vctapps.com/sw-qrcodes](http://www.vctapps.com/sw-qrcodes/) e veja alguns QR Codes disponíveis.
+Além da versão release publicada aqui no github, o app está disponível na Play Store. [Link](https://play.google.com/store/apps/details?id=com.vctapps.starwarscharacters&hl=pt_BR)
 
 ### API ###
 
