@@ -1,9 +1,12 @@
 package com.vctapps.starwarscharacters.ui.adapter;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 
+import com.vctapps.starwarscharacters.R;
 import com.vctapps.starwarscharacters.model.Character;
 import com.vctapps.starwarscharacters.model.CharacterObservable;
 import com.vctapps.starwarscharacters.model.Register;
@@ -23,14 +26,16 @@ public class AboutCharacterAdapter extends FragmentPagerAdapter {
 
     //Fragments
     private FragmentManager fm;
+    private Context context;
     private CharacterAboutFragment characterAbout;
     private MoviesFragment movies;
     private AboutFragment about;
 
-    public AboutCharacterAdapter(FragmentManager fm, Register register,
+    public AboutCharacterAdapter(FragmentManager fm, Context context, Register register,
                                  Character character, CharacterObservable observable) {
         super(fm);
         this.fm = fm;
+        this.context = context;
         this.observable = observable;
         this.character = character;
         this.register = register;
@@ -86,11 +91,11 @@ public class AboutCharacterAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position){
             case 0:
-                return "Personagem";
+                return context.getResources().getString(R.string.character);
             case 1:
-                return "Filmes";
+                return context.getResources().getString(R.string.movies);
             case 2:
-                return "Sobre";
+                return context.getResources().getString(R.string.about);
         }
         return super.getPageTitle(position);
     }

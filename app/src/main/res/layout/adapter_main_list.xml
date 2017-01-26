@@ -11,32 +11,25 @@
         android:layout_height="match_parent"
         android:padding="8dp">
 
-        <ImageView
-            android:id="@+id/image_main_list_placeholder"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@color/cardview_dark_background"
-            android:layout_marginRight="8dp"/>
-
         <TextView
+            android:textSize="22sp"
+            android:textStyle="bold"
             android:id="@+id/text_main_list_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/image_main_list_placeholder"/>
-
-        <TextView
-            android:id="@+id/text_main_list_link"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_main_list_user_name"
-            android:layout_toRightOf="@+id/image_main_list_placeholder"/>
+            />
 
         <TextView
             android:id="@+id/text_main_list_character_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_main_list_link"
-            android:layout_toRightOf="@+id/image_main_list_placeholder"/>
+            android:layout_below="@+id/text_main_list_user_name"/>
+
+        <TextView
+            android:id="@+id/text_main_list_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_main_list_character_name"/>
 
     </RelativeLayout>
 

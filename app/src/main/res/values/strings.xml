@@ -12,7 +12,7 @@
     <string name="lat">Latitude</string>
 
     <!-- Character About -->
-    <string name="character_name">NAme</string>
+    <string name="character_name">Name</string>
     <string name="character_height">Height</string>
     <string name="character_mass">Mass</string>
     <string name="character_hair_color">Hair color</string>
@@ -20,6 +20,11 @@
     <string name="character_eye_color">Eye color</string>
     <string name="character_year_birthday">Birthday year</string>
     <string name="character_gender">Gender</string>
+
+    <!-- Character Detail Titles -->
+    <string name="character">Character</string>
+    <string name="movies">Movies</string>
+    <string name="about">About</string>
 
     <!-- Avisos -->
     <string name="warning_no_character">No character found.\nBut you can come to the dark side of the force!</string>

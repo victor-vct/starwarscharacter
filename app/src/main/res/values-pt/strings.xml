@@ -22,6 +22,11 @@
     <string name="character_year_birthday">Ano de Nascimento</string>
     <string name="character_gender">Gênero</string>
 
+    <!-- Character Detail Titles -->
+    <string name="character">Personagem</string>
+    <string name="movies">Filmes</string>
+    <string name="about">Sobre</string>
+
     <!-- Avisos -->
     <string name="warning_no_character">Nenhum personagem foi encontrado.\nMas você pode vim para o lado negro da força!</string>
     <string name="warning_no_register">Nenhum registro parece ter.\nAdicionar um novo você deve...</string>

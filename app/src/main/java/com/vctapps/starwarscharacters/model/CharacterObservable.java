@@ -5,6 +5,7 @@ import java.util.Observable;
 /**
  * Classe com padrão Observable para avisar seus observers sobre um novo Personagem ou atualização
  * do mesmo.
+ * Usado para futura implementação do SwipeToRefresh
  */
 
 public class CharacterObservable extends Observable{

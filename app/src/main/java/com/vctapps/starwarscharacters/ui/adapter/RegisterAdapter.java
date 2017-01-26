@@ -54,8 +54,24 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.MyView
         if(reg != null){
             holder.userName.setText(reg.getUserName());
             holder.link.setText(reg.getLink());
-            holder.characterName.setText(reg.getCharacterName());
+            setCharacterName(holder.characterName, reg);
         }
+    }
+
+    /**
+     * Verifica se o nome do personagem está gravado na instancia. Caso positivo coloca o nome do
+     * personagem na view. Caso contrário, oculta a view.
+     * @param view
+     * @param register
+     */
+    private void setCharacterName(TextView view, Register register){
+        //Verifica se existe a string e se ela não está vazia
+        if(register.getCharacterName() != null && !register.getCharacterName().equals("")){
+            view.setVisibility(View.VISIBLE);
+            view.setText(register.getCharacterName());
+            return;
+        }
+        view.setVisibility(View.GONE); //se não existe texto, oculta
     }
 
     @Override
@@ -65,7 +81,6 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.MyView
 
     class MyViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView photo;
         TextView userName;
         TextView link;
         TextView characterName;
@@ -73,7 +88,6 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.MyView
         public MyViewHolder(View view){
             super(view);
 
-            photo = (ImageView) view.findViewById(R.id.image_main_list_placeholder);
             userName = (TextView) view.findViewById(R.id.text_main_list_user_name);
             link = (TextView) view.findViewById(R.id.text_main_list_link);
             characterName = (TextView) view.findViewById(R.id.text_main_list_character_name);

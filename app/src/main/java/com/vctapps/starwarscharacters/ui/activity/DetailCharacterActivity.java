@@ -84,7 +84,8 @@ public class DetailCharacterActivity extends AppCompatActivity
     public void onSuccess(Character character) {
         if(character != null) {
             Log.d(TAG, "Character recebido na activity: " + character.getName());
-            mAdapter = new AboutCharacterAdapter(getSupportFragmentManager(), register, character, observable);
+            mAdapter = new AboutCharacterAdapter(getSupportFragmentManager(), this,
+                    register, character, observable);
             mViewPager.setAdapter(mAdapter);
             mTabLayout.setupWithViewPager(mViewPager);
             observable.setCharacter(character);
