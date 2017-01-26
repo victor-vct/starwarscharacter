@@ -4,6 +4,11 @@ Aplicação que permite visualizar informações de personagem dos filmes Star W
 Para adicionar novos personagens, deve ser lido uma URL a partir de QR Code.
 Acesse [vctapps.com/sw-qrcodes](http://www.vctapps.com/sw-qrcodes/) e veja alguns QR Codes disponíveis.
 
+### API ###
+
+* [SWAPI](http://swapi.co/)
+* [TheMovieDb](https://www.themoviedb.org/documentation/api)
+
 ### Arquitetura utilizada ###
 
 * MVP
