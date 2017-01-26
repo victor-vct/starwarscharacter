@@ -23,7 +23,7 @@ Acesse [vctapps.com/sw-qrcodes](http://www.vctapps.com/sw-qrcodes/) e veja algun
 
 ### Patterns ###
 
-* Observe
+* Observer
 * Singleton
 
 ### Features ###
